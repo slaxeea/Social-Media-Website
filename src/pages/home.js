@@ -12,18 +12,18 @@ export class home extends Component {
     axios
       .get("/posts")
       .then((res) => {
-        console.log(res.data);
         this.setState({
           posts: res.data,
         });
       })
       .catch((err) => {
-        console.log(err);
+        console.log(`There was an error fetching the data: ${err}`);
       });
   }
+
   render() {
     let recentPosts = this.state.posts ? (
-        this.state.posts.map((post, i) => <Post post={post} key= {i}/>)
+        this.state.posts.map((post) => <Post post={post} key={post.postId}/>)
     ) : (
       <p>Loading posts...</p>
     );
@@ -39,5 +39,6 @@ export class home extends Component {
     );
   }
 }
+  
 
 export default home;
