@@ -1,5 +1,12 @@
 // Imports
-import { SET_USER, SET_ERRORS, CLEAR_ERRORS, LOADING_UI, SET_UNATHENTICATED } from "../types";
+import {
+  SET_USER,
+  SET_ERRORS,
+  CLEAR_ERRORS,
+  LOADING_UI,
+  SET_UNATHENTICATED,
+  LOADING_USER
+} from "../types";
 import axios from "axios";
 
 // Function to login user (I think)
@@ -16,21 +23,22 @@ export const loginUser = (userData, history) => (dispatch) => {
     })
     .catch((err) => {
       dispatch({
-          type: SET_ERRORS,
-          payload: err.response.data
+        type: SET_ERRORS,
+        payload: err.response.data,
       });
     });
 };
 
 // function to log out a user
 export const logoutUser = () => (dispatch) => {
-    localStorage.removeItem('FBAuthToken');
-    delete axios.defaults.headers.common['Authorization'];
-    dispatch({ type: SET_UNATHENTICATED});
-}
+  localStorage.removeItem("FBAuthToken");
+  delete axios.defaults.headers.common["Authorization"];
+  dispatch({ type: SET_UNATHENTICATED });
+};
 
 // get user data (as if that wasn't already clear by the name)
 export const getUserData = () => (dispatch) => {
+  dispatch({ type: LOADING_USER});
   axios
     .get("/user")
     .then((res) => {
@@ -46,26 +54,26 @@ export const getUserData = () => (dispatch) => {
 
 // Function to signup user
 export const signupUser = (newUserData, history) => (dispatch) => {
-    dispatch({ type: LOADING_UI });
-    axios
-      .post("/signup", newUserData)
-      .then((res) => {
-        //console.log(res.data);
-        setAuthorizationHeader(res.data.token);
-        dispatch(getUserData());
-        dispatch({ type: CLEAR_ERRORS });
-        history.push("/");
-      })
-      .catch((err) => {
-        dispatch({
-            type: SET_ERRORS,
-            payload: err.response.data
-        });
+  dispatch({ type: LOADING_UI });
+  axios
+    .post("/signup", newUserData)
+    .then((res) => {
+      //console.log(res.data);
+      setAuthorizationHeader(res.data.token);
+      dispatch(getUserData());
+      dispatch({ type: CLEAR_ERRORS });
+      history.push("/");
+    })
+    .catch((err) => {
+      dispatch({
+        type: SET_ERRORS,
+        payload: err.response.data,
       });
-  };
+    });
+};
 
-  const setAuthorizationHeader = (token) => {
-    const FBAuthToken = `Bearer ${token}`;
-    localStorage.setItem("FBAuthToken", FBAuthToken);
-    axios.defaults.headers.common["Authorization"] = FBAuthToken;
-  }
+const setAuthorizationHeader = (token) => {
+  const FBAuthToken = `Bearer ${token}`;
+  localStorage.setItem("FBAuthToken", FBAuthToken);
+  axios.defaults.headers.common["Authorization"] = FBAuthToken;
+};
