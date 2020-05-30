@@ -72,6 +72,18 @@ export const signupUser = (newUserData, history) => (dispatch) => {
     });
 };
 
+// Function to upload a profile image
+export const uploadImage = (formData) => (dispatch) => {
+  dispatch({ type: LOADING_USER});
+  axios.post('/user/image', formData)
+  .then(() => {
+    dispatch(getUserData());
+  })
+  .catch(err => {
+    console.log(err);
+  })
+}
+
 const setAuthorizationHeader = (token) => {
   const FBAuthToken = `Bearer ${token}`;
   localStorage.setItem("FBAuthToken", FBAuthToken);

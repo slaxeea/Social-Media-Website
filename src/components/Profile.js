@@ -9,11 +9,12 @@ import Button from "@material-ui/core/Button";
 import MuiLink from "@material-ui/core/Link";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from "@material-ui/core/Tooltip";
 
 // Redux stuff
 import { connect } from "react-redux";
 import Typography from "@material-ui/core/Typography";
+import { logoutUser, uploadImage } from "../redux/actions/userActions";
 
 // Icons
 import LocationOn from "@material-ui/icons/LocationOn";
@@ -73,13 +74,15 @@ const styles = {
 
 class Profile extends Component {
   handleImageChange = (event) => {
-      const image = event.target.files[0];
-      
-  }; 
-  handleEditImage =  () => {
-      const fileInput = document.getElementById('imageInput');
-      fileInput.click();
-  }
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+    this.props.uploadImage(formData);
+  };
+  handleEditImage = () => {
+    const fileInput = document.getElementById("imageInput");
+    fileInput.click();
+  };
   render() {
     const {
       classes,
@@ -102,9 +105,9 @@ class Profile extends Component {
                 onChange={this.handleImageChange}
               />
               <Tooltip title="Edit profile picture" placement="bottom">
-              <IconButton onClick={this.handleEditImage} className="button">
-                  <EditIcon color="primary" aling="right"/>
-              </IconButton>
+                <IconButton onClick={this.handleEditImage} className="button">
+                  <EditIcon color="primary" aling="right" />
+                </IconButton>
               </Tooltip>
             </div>
             <hr />
@@ -140,7 +143,7 @@ class Profile extends Component {
               <span>Joined {dayjs(createdAt).format("DD MMMM YYYY")}</span>
             </div>
           </div>
-          <hr invi/>
+          <hr invi />
         </Paper>
       ) : (
         <Paper className={classes.paper}>
@@ -179,9 +182,16 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
+const mapActionsToProps = { logoutUser, uploadImage };
+
 Profile.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Profile));
