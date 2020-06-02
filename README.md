@@ -1,9 +1,9 @@
+Hi, this is the repository for a project I made in school
 
-Hi, das isch mis Repo für es Schuelprojekt.
+It's not nearly finished but I am still working on it.
 
-Es isch no lang ned fertig und btw. das isch mis erste projekt
-mit Git drum falls ich eppis falsch gmacht ha eif säge!
+Everything is based on a tutorialseries from classed on YouTube.
 
-Fast alles isch uf Basis vo ere YT-Tutorial serie vo classed.
+This repository only covers the front-end, backend software is in another repository
 
-Das sind nur Front-End sache, Ich weis ned ob und wie ich sett Back-End da inetue. 
+By the way, this is the first Project i used GitHub for so if I made any mistakes, please tell me!
