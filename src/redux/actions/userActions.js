@@ -34,6 +34,8 @@ export const logoutUser = () => (dispatch) => {
   localStorage.removeItem("FBAuthToken");
   delete axios.defaults.headers.common["Authorization"];
   dispatch({ type: SET_UNATHENTICATED });
+  console.log("User logged out");
+  window.location.reload();
 };
 
 // get user data (as if that wasn't already clear by the name)
@@ -82,6 +84,18 @@ export const uploadImage = (formData) => (dispatch) => {
   .catch(err => {
     console.log(err);
   })
+}
+
+// Function to edit userdetails
+export const editUserDetails = (userDetails) => (dispatch) => {
+  dispatch({ type: LOADING_USER});
+  axios.post('/user', userDetails)
+    .then(() => {
+      dispatch(getUserData());
+    })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 const setAuthorizationHeader = (token) => {
