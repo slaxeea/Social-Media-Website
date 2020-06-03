@@ -36,10 +36,13 @@ class EditDetails extends Component {
       location: credentials.location ? credentials.location : "",
     });
   };
+
+  // Function to open a dialogue
   handleOpen = () => {
     this.setState({ open: true });
     this.mapUserDetailsToState(this.props.credentials);
   };
+  // Function to close a dialogue
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -47,12 +50,13 @@ class EditDetails extends Component {
     const { credentials } = this.props;
     this.mapUserDetailsToState(credentials);
   }
-
+  // Function for changes in the profile
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
   };
+  // Function to submitt the changes
   handleSubmit = () => {
     const userDetails = {
       bio: this.state.bio,

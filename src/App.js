@@ -26,6 +26,7 @@ import signup from "./pages/signup";
 
 const token = localStorage.FBAuthToken;
 
+// Check if there's a token
 if (token) {
   const decodedToken = jwtDecode(token);
   if (decodedToken.exp * 1000 < Date.now()) {

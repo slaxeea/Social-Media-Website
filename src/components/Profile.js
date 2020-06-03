@@ -158,7 +158,7 @@ class Profile extends Component {
               </MyButton>
             <EditDetails />
           </div>
-          <hr invi />
+          <hr/>
         </Paper>
       ) : (
         <Paper className={classes.paper}>

@@ -2,31 +2,25 @@ import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
+import PropTypes from 'prop-types';
 
 // import the post and profile sections
 import Post from "../components/Post"
 import Profile from "../components/Profile";
 
+import { connect } from 'react-redux';
+import {getPosts} from '../redux/actions/dataActions';
+
 export class home extends Component {
-  state = {
-    posts: null,
-  };
+
   componentDidMount() {
-    axios
-      .get("/posts")
-      .then((res) => {
-        this.setState({
-          posts: res.data,
-        });
-      })
-      .catch((err) => {
-        console.log(`There was an error fetching the data: ${err}`);
-      });
+    this.props.getPosts();
   }
 
   render() {
-    let recentPosts = this.state.posts ? (
-        this.state.posts.map((post) => <Post post={post} key={post.postId}/>)
+    const { posts, loading } = this.props.data;
+    let recentPosts = !loading ? (
+        posts.map((post) => <Post post={post} key={post.postId}/>)
     ) : (
       <div>
       <p>Loading posts...</p>
@@ -45,6 +39,14 @@ export class home extends Component {
     );
   }
 }
-  
 
-export default home;
+home.propTypes = {
+  getPosts: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+}
+  
+const mapStateToProps = state => ({
+  data: state.data
+})
+
+export default connect(mapStateToProps, { getPosts } )  ( home );

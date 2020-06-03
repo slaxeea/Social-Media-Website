@@ -21,6 +21,7 @@ class Navbar extends Component {
       <AppBar position="fixed">
         <Toolbar className="nav-container">
           {authenticated ? (
+            // If the user is authenticated
               <Fragment>
                 <MyButton tip ="Create a post" >
                   <AddIcon/>
@@ -35,6 +36,7 @@ class Navbar extends Component {
                 </MyButton>
               </Fragment>
           ) : (
+            // If the user is not authenticated
             <Fragment>
               <Button color="inherit" component={Link} to="/">
             Home
