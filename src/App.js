@@ -4,10 +4,11 @@ import "./App.css";
 import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import createMuiTheme from "@material-ui/core/styles/createMuiTheme";
 import axios from "axios";
+import themeObject from './util/theme';
 
 // Import Components
 import Navbar from "./components/Navbar";
-import AuthRoute from "./components/AuthRoute";
+import AuthRoute from "./util/AuthRoute";
 
 // Redux stuff
 import { Provider } from "react-redux";
@@ -37,45 +38,7 @@ if (token) {
   }
 }
 
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#1a237e",
-    },
-    secondary: {
-      main: "#ff6f00",
-    },
-  },
-  typography: {
-    useNextVariants: true,
-  },
-  form: {
-    textAlign: "center",
-  },
-  image: {
-    height: 90,
-    width: 80,
-    margin: "auto auto 20px auto",
-  },
-  title: {
-    margin: "5px auto 5px auto",
-  },
-  textField: {
-    margin: "10px auto 10px auto",
-  },
-  button: {
-    margin: "10px auto 10px auto",
-    position: "relative",
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8 rem",
-  },
-  progress: {
-    position: "absolute",
-    margin: "10px auto auto 5px",
-  },
-});
+const theme = createMuiTheme(themeObject);
 
 function App() {
   return (
