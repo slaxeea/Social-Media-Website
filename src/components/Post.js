@@ -22,6 +22,7 @@ import PropTypes from "prop-types";
 
 import { likePost, unlikePost } from "../redux/actions/dataActions";
 import MyButton from "../util/MyButton";
+import DeletePost from "./DeletePost";
 
 const styles = {
   card: {
@@ -39,19 +40,16 @@ const styles = {
 };
 
 class Post extends Component {
-
   likedPost = () => {
-    if(this.props.user.likes.find((like) => like.postId === this.props.postId)){
-      console.log("post liked");
-    }
     if (
       this.props.user.likes &&
-      this.props.user.likes.find((like) => like.postId === this.props.postId)
+      this.props.user.likes.find(
+        (like) => like.postId === this.props.post.postId
+      )
     )
       return true;
     else return false;
   };
-
   likePost = () => {
     this.props.likePost(this.props.post.postId);
   };
@@ -73,7 +71,10 @@ class Post extends Component {
         likeCount,
         commentCount,
       },
-      user: { authenticated },
+      user: {
+        authenticated,
+        credentials: { handle },
+      },
     } = this.props;
 
     const likeButton = !authenticated ? (
@@ -91,6 +92,10 @@ class Post extends Component {
         <FavoriteBorder color="primary" />
       </MyButton>
     );
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeletePost postId={postId} />
+      ) : null; // Not authenticated
 
     return (
       <Card className={classes.card}>
@@ -109,12 +114,15 @@ class Post extends Component {
           >
             {userHandle}
           </Typography>
+          {deleteButton}
           <Typography variant="body2" color="textSecondary">
             {dayjs(createdAt).fromNow()}
           </Typography>
           <Typography variant="body1">{body}</Typography>
           {likeButton}
-          <span>{likeCount} Likes</span>
+          <span>
+            {likeCount} {likeCount > 1 ? "Likes" : "Like"}
+          </span>
           <MyButton tip="Comments">
             <ChatIcon color="primary" />
           </MyButton>

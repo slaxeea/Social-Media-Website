@@ -1,4 +1,10 @@
-import { SET_POSTS, LOADING_DATA, LIKE_POST, UNLIKE_POST } from "../types";
+import {
+  SET_POSTS,
+  LOADING_DATA,
+  LIKE_POST,
+  UNLIKE_POST,
+  DELETE_POST,
+} from "../types";
 import axios from "axios";
 
 // Get all posts
@@ -22,28 +28,35 @@ export const getPosts = () => (dispatch) => {
 
 // Like a post
 export const likePost = (postId) => (dispatch) => {
-    axios
-      .post(`/post/${postId}/like`)
-      .then((res) => {
-        dispatch({
-          type: LIKE_POST,
-          payload: res.data
-        });
-      })
-      .catch((err) => console.log(err));
-  };
-  // Unlike a post
-  export const unlikePost = (postId) => (dispatch) => {
-    axios
-      .post(`/post/${postId}/unlike`)
-      .then((res) => {
-        dispatch({
-          type: UNLIKE_POST,
-          payload: res.data
-        });
-      })
-      .catch((err) => console.log(err));
-  };
-// ------------------------
+  axios
+    .post(`/post/${postId}/like`)
+    .then((res) => {
+      dispatch({
+        type: LIKE_POST,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
+// Unlike a post
+export const unlikePost = (postId) => (dispatch) => {
+  axios
+    .post(`/post/${postId}/unlike`)
+    .then((res) => {
+      dispatch({
+        type: UNLIKE_POST,
+        payload: res.data,
+      });
+    })
+    .catch((err) => console.log(err));
+};
 
-// comment a post ?
+// Delete Post
+export const deletePost = (postId) => (dispatch) => {
+  axios
+    .delete(`/post/${postId}`)
+    .then(() => {
+      dispatch({ type: DELETE_POST, payload: postId });
+    })
+    .catch((err) => console.log(err));
+};
