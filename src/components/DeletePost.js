@@ -17,7 +17,13 @@ import PropTypes from "prop-types";
 import MyButton from "../util/MyButton";
 import { withStyles } from "@material-ui/core";
 
-const styles = {};
+const styles = {
+    deleteButton:  {
+        position: "absolute",
+        left: "90%",
+        top:"10%"
+    }
+};
 
 class DeletePost extends Component {
   state = {
@@ -37,6 +43,8 @@ class DeletePost extends Component {
     const { classes } = this.props;
 
     return (
+
+        
       <Fragment>
         <MyButton
           tip="Delete Post"
@@ -74,4 +82,4 @@ DeletePost.propTypes = {
   postId: PropTypes.string.isRequired,
 };
 
-export default connect(null, { deletePost })(withStyles(styles)(deletePost));
+export default connect(null, { deletePost })(withStyles(styles)(DeletePost));

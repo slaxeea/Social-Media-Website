@@ -9,6 +9,7 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import ChatIcon from "@material-ui/icons/Chat";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import FavoriteIcon from "@material-ui/icons/Favorite";
+import DeleteOutline from "@material-ui/icons/DeleteOutline";
 
 // React stuff
 import React, { Component } from "react";
@@ -26,6 +27,7 @@ import DeletePost from "./DeletePost";
 
 const styles = {
   card: {
+    position:"relative",
     display: "flex",
     marginBottom: 20,
   },
@@ -92,6 +94,7 @@ class Post extends Component {
         <FavoriteBorder color="primary" />
       </MyButton>
     );
+
     const deleteButton =
       authenticated && userHandle === handle ? (
         <DeletePost postId={postId} />

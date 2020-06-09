@@ -30,6 +30,7 @@ const styles = {
     padding: 20,
   },
   profile: {
+    // position:"fixed",
     "& .image-wrapper": {
       textAlign: "center",
       position: "relative",
@@ -75,6 +76,7 @@ const styles = {
 };
 
 class Profile extends Component {
+  
   handleImageChange = (event) => {
     const image = event.target.files[0];
     const formData = new FormData();
@@ -100,6 +102,7 @@ class Profile extends Component {
     } = this.props;
     let profileMarkup = !loading ? (
       authenticated ? (
+        
         <Paper className={classes.Paper}>
           <div className={classes.profile}>
             <div>
