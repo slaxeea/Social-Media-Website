@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
-import MyButton from '../util/MyButton';
+import MyButton from "../util/MyButton";
 import theme from "../util/theme";
 
 import { connect } from "react-redux";
@@ -13,42 +13,128 @@ import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from "@material-ui/core/CircularProgress";
+import AddIcon from "@material-ui/icons/Add";
+import CloseIcon from "@material-ui/icons/Close";
 
-const styles = {
+const styles = (theme) => ({
+  //...theme,
+  submitButton: {
+      position:'relative'
+  },
+  progress: {
+      position: 'absolute',
 
-}
+  },
+  closeButton: {
+      position: 'absolute',
+      left: '90%',
+      top: '10%'
+  }
+});
 
-class PostPost extends Component{
-    state = {
-        open: false,
-        body: '',
-        errors: {}
-    };
-    handldOpen = () => {
-        this.setState({
-            open: true
-        })
+class PostPost extends Component {
+  state = {
+    open: false,
+    body: "",
+    errors: {},
+  };
+  componentWillReceiveProps(nextProps)  {
+    if(nextProps.UI.errors){
+      this.setState({
+        errors: nextProps.UI.errors
+      })
     }
-    handleClose = () => {
-        this.setState({
-            open: false
-        })
-    }
-    render(){
-        const { errors } = this.state;
-        const { classes, UI } = this.props; 
-        return;
-    }
+  }
+  handldOpen = () => {
+    this.setState({
+      open: true,
+    });
+  };
+  handleClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+  handleChange = (event) =>{
+    this.setState({ [event.target.name]: event.target.value});
+  };
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.postPost({ body: this.state.body });
+  };
+
+  render() {
+    const { errors } = this.state;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
+
+    return (
+      <Fragment>
+        <MyButton onClick={this.handldOpen} tip="Click to post">
+          <AddIcon color="secondary" />
+        </MyButton>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          fullWidth
+          maxWidth="sm"
+        >
+          <MyButton
+            tip="Close"
+            onClick={this.handleClose}
+            tipClassName={classes.closeButton}
+          >
+            <CloseIcon />
+          </MyButton>
+          <DialogTitle>Submit a new Post</DialogTitle>
+          <DialogContent>
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                name="body"
+                type="text"
+                label="POST"
+                multiline
+                fullWidth
+                rows="3"
+                placeholder="Tell the world what's up"
+                error={errors.body ? true : false}
+                helperText={errors.body}
+                className={classes.textField}
+                onChange={this.handleChange}
+              />
+              <Button
+                type="submit"
+                variant="contained"
+                color="primary"
+                className={classes.submitButton}
+                disable={loading}
+              >
+                Submit
+              </Button>
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
+            </form>
+          </DialogContent>
+        </Dialog>
+      </Fragment>
+    );
+  }
 }
 
 PostPost.propTypes = {
-    postPost: PropTypes.func.isRequired,
-    UI: PropTypes.object.isRequired
-}
+  postPost: PropTypes.func.isRequired,
+  UI: PropTypes.object.isRequired
+};
 
 const mapStateToProps = (state) => ({
-    UI: state.UI
-})
+  UI: state.UI
+});
 
-export default connect((mapStateToProps, {postPost}))(withStyles(styles)(PostPost))
+export default connect(
+  mapStateToProps,
+  { postPost }
+)(withStyles(styles)(PostPost));
