@@ -21,9 +21,11 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 import PropTypes from "prop-types";
 
+// Components
 import { likePost, unlikePost } from "../redux/actions/dataActions";
 import MyButton from "../util/MyButton";
 import DeletePost from "./DeletePost";
+import PostDialog from './PostDialog';
 
 const styles = {
   card: {
@@ -130,6 +132,7 @@ class Post extends Component {
             <ChatIcon color="primary" />
           </MyButton>
           <span>{commentCount} Comments</span>
+          <PostDialog postId={postId} userHandle={userHandle} />
         </CardContent>
       </Card>
     );
