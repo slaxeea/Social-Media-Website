@@ -19,7 +19,7 @@ export class home extends Component {
 
   render() {
     const { posts, loading } = this.props.data;
-    let recentPosts = !loading ? (
+    let recentPosts = !loading && posts.lenght > 0 ? (
         posts.map((post) => <Post post={post} key={post.postId}/>)
     ) : (
       <div>
@@ -27,6 +27,7 @@ export class home extends Component {
       <CircularProgress  color="primary" size={30}></CircularProgress>
       </div>
     );
+
     return (
       <Grid container spacing={6}>
         <Grid item sm={8} xs={12}>

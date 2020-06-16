@@ -20,10 +20,12 @@ import Typography from '@material-ui/core/Typography';
 // Icons
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMore from "@material-ui/icons/UnfoldMore";
+import ChatIcon from '@material-ui/icons/Chat';
 
 // Redux stuff
 import { connect } from "react-redux";
 import { getPost } from "../redux/actions/dataActions";
+import { LikeButton } from "./LikeButton";
 
 const styles = (theme) => ({
   //...theme,
@@ -42,6 +44,15 @@ const styles = (theme) => ({
   closeButton: {
       position: 'absolute',
       left: '90%'
+  },
+  expandButton:{
+      position:'absolute',
+      left: '90%'
+  },
+  progress: {
+      textAlign: 'center',
+      marginTop: 50,
+      marginBottom: 50
   }
 });
 
@@ -77,10 +88,12 @@ class PostDialog extends Component {
     } = this.props;
 
     const dialogMarkup = loading ? (
-      <CircularProgress size={100} />
+      <div className={classes.progress}>
+          <CircularProgress size={100} thickness={2} />
+      </div>
     ) : (
-      <Grid container spacing={16}>
-        <Grid item sm={5}>
+      <Grid container spacing={2}>
+        <Grid item sm={5} style={{paddingLeft: 10}}>
           <img
             src={userImage}
             alt="user Image"
@@ -104,6 +117,16 @@ class PostDialog extends Component {
           <Typography variant="body1">
               {body}
           </Typography>
+          <LikeButton postId={postId}/>
+          <span>
+            {likeCount} {likeCount > 1 || likeCount === 0 ? "Likes" : "Like"}
+          </span>
+          <MyButton tip="Comments">
+            <ChatIcon color="primary" />
+          </MyButton>
+          <span>
+            {commentCount} {commentCount > 1 || commentCount === 0 ? "Comments" : "Comment"}
+          </span>
         </Grid>
       </Grid>
     );
@@ -130,7 +153,7 @@ class PostDialog extends Component {
           >
             <CloseIcon />
           </MyButton>
-          <DialogContent className={classes.DialogContent}>
+          <DialogContent className={classes.dialogContent}>
             {dialogMarkup}
           </DialogContent>
         </Dialog>
