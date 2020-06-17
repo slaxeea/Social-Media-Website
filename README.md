@@ -10,9 +10,10 @@ Letzte Änderungen:
 -Das Desing der Webseite wurde überarbeitet                                                 
 -Bugfixes                           
 
+________________________________________________                                                                        
 
 Wie cha ich das sälber installiere?                                                     
-________________________________________________
+
 1. Repository downloade und entzipe                                                             
 2. Node.js installiere: https://nodejs.org/en/download/                                 
 3. I de Konsole in Ordner navigier und die Commands usfüere:                                    
