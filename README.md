@@ -2,13 +2,13 @@ Hi, das isch es Repo für es Schuelprojekt. Es sind alli .JS Dateie da wo au uf 
 
 Details zu dem Projekt:
 ________________________________________________
-Author: Simon Kappeler
-Datum: 17.06.2020
-Version: 1.0
-Status: In Bearbeitung
-Letzte Änderungen:
--Das Desing der Webseite wurde überarbeitet
--Bugfixes
+Author: Simon Kappeler ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏ ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
+Datum: 17.06.2020 ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏ ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏ ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
+Version: 1.0 ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏ ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
+Status: In Bearbeitung ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
+Letzte Änderungen: ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
+-Das Desing der Webseite wurde überarbeitet ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏ ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
+-Bugfixes ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‎  ‏‏‏
 ________________________________________________
 
 
