@@ -1,9 +1,27 @@
-Hi, this is the repository for a project I made in school
+Hi, das isch es Repo für es Schuelprojekt. Es sind alli .JS Dateie da wo au uf Firebase isch, es isch alles glich wie ufem hosting-server. De Link zu de Website (vorerst):  https://socialape-99a82.firebaseapp.com/
 
-It's not nearly finished but I am still working on it.
+Details zu dem Projekt:
+------------------------------
+Author: Simon Kappeler
+Datum: 17.06.2020
+Version: 1.0
+Status: In Bearbeitung
+Letzte Änderungen:
+-Das Desing der Webseite wurde überarbeitet
+-Bugfixes
+------------------------------
 
-Everything is based on a tutorialseries from classed on YouTube.
 
-This repository only covers the front-end, backend software is in another repository
+Wie cha ich das sälber installiere?
+------------------------------
+1. Repository downloade und entzipe
+2. Node.js installiere: https://nodejs.org/en/download/
+3. I de Konsole in Ordner navigier und die Commands usfüere:
+    $ npm install
+    $ npm start
+   En Tab sött sich öffne mit de Website als localhost:3000
+------------------------------
 
-By the way, this is the first Project i used GitHub for so if I made any mistakes, please tell me!
+So, ich hoff das das witerhilft, 
+
+simon
