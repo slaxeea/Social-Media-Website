@@ -1,5 +1,7 @@
 Hi, das isch es Repo für es Schuelprojekt. Es sind alli .JS Dateie da wo au uf Firebase isch, es isch alles glich wie ufem hosting-server. De Link zu de Website (vorerst):  https://socialape-99a82.firebaseapp.com/
 
+Disclaimer: Das Projekt isch stark inspiriert vo ere Tutorial serie vom ihm:https://www.youtube.com/watch?v=m_u6P5k0vP0&list=LLpg4a83rQQkat950BrK1qqw&index=3&t=33008s Ich has ned kopiert, ich ha alles sälber gschribe. Aber ohni Ihn wär das nie so worde. Er hätt au GitHub: https://github.com/hidjou                                                      
+
 Details zu dem Projekt:
 ________________________________________________
 Author: Simon Kappeler                                          
