@@ -1,9 +1,6 @@
 // Import types
 import {
   SET_USER,
-  SET_ERRORS,
-  CLEAR_ERRORS,
-  LOADING_UI,
   SET_UNATHENTICATED,
   LOADING_USER,
   LIKE_POST,
@@ -26,8 +23,6 @@ export default function (state = initialState, action) {
         ...state,
         authenticated: true,
       };
-    case SET_UNATHENTICATED:
-      return initialState;
     case SET_USER:
       return {
         authenticated: true,

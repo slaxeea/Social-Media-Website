@@ -3,7 +3,6 @@ import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 import MyButton from "../util/MyButton";
-import theme from "../util/theme";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
@@ -96,7 +95,7 @@ class PostDialog extends Component {
         <Grid item sm={5} style={{paddingLeft: 10}}>
           <img
             src={userImage}
-            alt="user Image"
+            alt="profile"
             className={classes.profileImage}
           />
         </Grid>

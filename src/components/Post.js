@@ -7,7 +7,6 @@ import withStyles from "@material-ui/core/styles/withStyles";
 
 // Icons
 import ChatIcon from "@material-ui/icons/Chat";
-import DeleteOutline from "@material-ui/icons/DeleteOutline";
 
 // React stuff
 import React, { Component } from "react";
@@ -63,8 +62,6 @@ class Post extends Component {
         credentials: { handle },
       },
     } = this.props;
-
-    
 
     const deleteButton =
       authenticated && userHandle === handle ? (

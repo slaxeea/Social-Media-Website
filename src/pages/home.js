@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Grid from "@material-ui/core/Grid";
-import axios from "axios";
 import CircularProgress from '@material-ui/core/CircularProgress';
 import PropTypes from 'prop-types';
 
@@ -19,7 +18,7 @@ export class home extends Component {
 
   render() {
     const { posts, loading } = this.props.data;
-    let recentPosts = !loading && posts.lenght > 0 ? (
+    let recentPosts = !loading ? (
         posts.map((post) => <Post post={post} key={post.postId}/>)
     ) : (
       <div>
