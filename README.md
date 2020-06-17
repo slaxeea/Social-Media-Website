@@ -8,9 +8,8 @@ Version: 1.0
 Status: In Bearbeitung                                      
 Letzte Änderungen:                              
 -Das Desing der Webseite wurde überarbeitet                                                 
--Bugfixes                       
+-Bugfixes                           
 ________________________________________________
-
 
 Wie cha ich das sälber installiere?                                                     
 ________________________________________________
